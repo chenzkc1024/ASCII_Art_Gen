@@ -1,0 +1,26 @@
+from PIL import Image
+
+# open image file
+image = Image.open('pikachu.png')
+
+width, height = image.size
+
+# 2d array to store pixel data
+pixel_matrix = []
+
+# Iterate over each row of pixels
+for i in range(height):
+     row =[]
+
+     for j in range(width):
+
+          pixel = image.getpixel((j,i))
+          row.append(pixel)
+     pixel_matrix.append(row)
+
+print("Successfully constructed pixel matrix!")
+print("Pixel matrix size:", width, "x", height)
+print("Iterating through pixel contents:")
+for row in pixel_matrix:
+    for pixel in row:
+        print(pixel)
