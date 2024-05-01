@@ -1,0 +1,3 @@
+def brightness_to_ascii(brightness):
+    ascii_index = int(brightness / 255 * (len(ascii_chars) - 1))
+    return ascii_chars[ascii_index]

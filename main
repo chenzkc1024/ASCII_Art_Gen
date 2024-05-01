@@ -1,23 +1,40 @@
 from PIL import Image
 from calculate_brightness import calculate_brightness
-
+from brightness2ascii import brightness_to_ascii
 
 # Open the image
 im = Image.open("pikachu.png")
 
-# Convert the image to 'RGB' mode
-im = im.convert('RGB')
+# Resize the image to the desired dimensions
+resized_im = im.resize((150, 100))
 
+# Convert the resized image to 'RGB' mode
+resized_im = resized_im.convert('RGB')
+
+ascii_art = ""
 # Load pixel data
-px = im.load()
+px = resized_im.load()
 
+ascii_matrix = []
 # Iterate over every coordinate in the image
-for y in range(im.height):
-    for x in range(im.width):
+for y in range(resized_im.height):
+     ascii_row = []
+     for x in range(resized_im.width):
         # Access the RGB values of the pixel at the current coordinates
         pixel = px[x, y]
         # print(pixel)
 
         brightness = calculate_brightness(pixel)
-        print(brightness)
+        
+        ascii_char = brightness_to_ascii(brightness)
+        ascii_row.append(ascii_char)
+     
+     ascii_matrix.append(ascii_row)
 
+print(resized_im.size)
+
+print("Iterating through pixel ASCII characters:")
+for row in ascii_matrix:
+    for char in row:
+        print(char, end="")
+    print()  # Move to the next line for the next row
