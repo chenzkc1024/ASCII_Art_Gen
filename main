@@ -1,26 +1,23 @@
 from PIL import Image
+from calculate_brightness import calculate_brightness
 
-# open image file
-image = Image.open('pikachu.png')
 
-width, height = image.size
+# Open the image
+im = Image.open("pikachu.png")
 
-# 2d array to store pixel data
-pixel_matrix = []
+# Convert the image to 'RGB' mode
+im = im.convert('RGB')
 
-# Iterate over each row of pixels
-for i in range(height):
-     row =[]
+# Load pixel data
+px = im.load()
 
-     for j in range(width):
+# Iterate over every coordinate in the image
+for y in range(im.height):
+    for x in range(im.width):
+        # Access the RGB values of the pixel at the current coordinates
+        pixel = px[x, y]
+        # print(pixel)
 
-          pixel = image.getpixel((j,i))
-          row.append(pixel)
-     pixel_matrix.append(row)
+        brightness = calculate_brightness(pixel)
+        print(brightness)
 
-print("Successfully constructed pixel matrix!")
-print("Pixel matrix size:", width, "x", height)
-print("Iterating through pixel contents:")
-for row in pixel_matrix:
-    for pixel in row:
-        print(pixel)
