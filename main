@@ -3,10 +3,10 @@ from calculate_brightness import calculate_brightness
 from brightness2ascii import brightness_to_ascii
 
 # Open the image
-im = Image.open("littlealex.png")
+im = Image.open("pikachu.png")
 
 # Resize the image to the desired dimensions
-resized_im = im.resize((399 , 251))
+resized_im = im.resize((200 , 100))
 
 # Convert the resized image to 'RGB' mode
 resized_im = resized_im.convert('RGB')
