@@ -3,7 +3,7 @@ from calculate_brightness import calculate_brightness
 from brightness2ascii import brightness_to_ascii
 
 # Open the image
-im = Image.open("torontoskyline1.jpg")
+im = Image.open("Michelangelo_-_Creation_of_Adam_(cropped).jpg")
 
 # Resize the image to the desired dimensions
 resized_im = im.resize((820 , 100))
